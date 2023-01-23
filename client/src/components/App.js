@@ -1,9 +1,16 @@
 import React from "react";
-import "../../css/app.css";
+import { Routes, Route } from "react-router-dom";
+
+import Header from "./Header";
+import Home from "./Home";
+
 export default function App() {
     return (
-        <>
-            <h1>React Initialize Project</h1>
-        </>
+        <div id="main">
+            <Header></Header>
+            <Routes>
+                <Route path="/" element={<Home></Home>}></Route>
+            </Routes>
+        </div>
     );
 }

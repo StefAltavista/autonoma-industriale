@@ -1,6 +1,6 @@
 const path = require("path");
 const HTMLwebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
     entry: "./client/src/start.js",
 

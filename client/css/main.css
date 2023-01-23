@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    color: red;
+    font-family: "Courier New", Courier, monospace;
+}
+body {
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+#main {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+    z-index: 1;
+}
