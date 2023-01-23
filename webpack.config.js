@@ -2,18 +2,13 @@ const path = require("path");
 const HTMLwebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-    entry: [
-        "./client/src/start.js",
-        path.join(__dirname, "public", "css", "style.css"),
-    ],
+    entry: "./client/src/start.js",
+
     output: {
         path: path.join(__dirname, "/dist"),
         filename: "bundle.js",
     },
-    plugins: [
-        new HTMLwebpackPlugin({ template: "./public/src/index.html" }),
-        new MiniCssExtractPlugin(),
-    ],
+    plugins: [new HTMLwebpackPlugin({ template: "./client/src/index.html" })],
     devServer: {
         static: path.join(__dirname, "public"),
         proxy: {
@@ -38,15 +33,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader",
-                        options: {
-                            url: false,
-                        },
-                    },
-                ],
+                use: ["style-loader", "css-loader"],
             },
         ],
     },
