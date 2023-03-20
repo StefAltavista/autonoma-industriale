@@ -2,7 +2,15 @@
     box-sizing: border-box;
     color: red;
     font-family: "Courier New", Courier, monospace;
+    -ms-overflow-style: none; /* hide scrollbar IE and Edge */
+    scrollbar-width: none; /* hide scrollbar Firefox */
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     background-color: rgb(0, 0, 0);
     width: 100vw;
@@ -18,4 +26,8 @@ body {
     height: 100vh;
     overflow: scroll;
     z-index: 1;
+}
+
+a {
+    text-decoration: none;
 }
