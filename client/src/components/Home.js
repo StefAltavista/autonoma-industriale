@@ -1,5 +1,6 @@
 import React from "react";
+import Subscribe from "./Subscribe";
 
-export default function () {
-    return <p>HOME</p>;
+export default function Home() {
+    return <Subscribe />;
 }

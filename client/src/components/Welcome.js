@@ -9,17 +9,27 @@ export default function Welcome({ children }) {
     const [click, setClick] = useState(false);
 
     const handleClick = () => {
-        vidRef.current.muted = false;
+        if (!enter) {
+            vidRef.current.muted = false;
+        }
         click ? setEnter(true) : setClick(true);
     };
-    const toggleMute = () => {
-        setMuteIcon(!muteIcon);
-        vidRef.current.muted = !vidRef.current.muted;
+    const toggleMute = (e) => {
+        if (e.target.className == "mute") {
+            setMuteIcon(!muteIcon);
+            vidRef.current.muted = !vidRef.current.muted;
+        }
     };
     return (
         <BrowserRouter>
             <div id="welcome" onClick={handleClick}>
-                <video className="video" autoPlay loop muted ref={vidRef}>
+                <video
+                    className="video"
+                    autoPlay
+                    loop
+                    muted={true}
+                    ref={vidRef}
+                >
                     <source src="videos/Teaser21march.mp4" type="video/mp4" />
                 </video>
                 {!enter && (
@@ -33,8 +43,10 @@ export default function Welcome({ children }) {
                 {enter && <div className="enter">{children}</div>}
             </div>
             {enter && (
-                <div id="mute" onClick={toggleMute}>
+                <div className="mute">
                     <img
+                        className="mute"
+                        onClick={(e) => toggleMute(e)}
                         src={
                             muteIcon
                                 ? "icons/soundOn.png"

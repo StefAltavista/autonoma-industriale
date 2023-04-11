@@ -14,7 +14,7 @@ client.connect((error) => {
 });
 
 const subscription = (email) => {
-    return db.query(
+    return client.query(
         `
     INSERT INTO subscribers 
     (email) VALUES ($1)`,
@@ -23,13 +23,13 @@ const subscription = (email) => {
 };
 
 const getList = () => {
-    return db.query(`
+    return client.query(`
     SELECT * FROM subscribers
     `);
 };
 
 const checkUser = (email) => {
-    return db.query(
+    return client.query(
         `
     SELECT id, email FROM subscribers
     WHERE email = $1
@@ -39,7 +39,7 @@ const checkUser = (email) => {
 };
 
 const unsubscribe = (email) => {
-    return db.query(
+    return client.query(
         `
     DELETE FROM subscribers
     WHERE email = $1`,

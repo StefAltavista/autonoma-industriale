@@ -6,6 +6,11 @@ import Home from "./Home";
 import Archive from "./Archive";
 import About from "./About";
 import Dashboard from "./Dashboard";
+import Links from "./Links";
+import Subscribe from "./Subscribe";
+import Unsubscribe from "./Unsubscribe";
+import Admin from "./Admin";
+import Events from "./Events";
 
 export default function App() {
     return (
@@ -16,6 +21,11 @@ export default function App() {
                 <Route path="/archive" element={<Archive />}></Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path="/dashboard" element={<Dashboard />}></Route>
+                <Route path="/links" element={<Links />}></Route>
+                <Route path="/subscribe" element={<Subscribe />}></Route>
+                <Route path="/unsubscribe" element={<Unsubscribe />}></Route>
+                <Route path="/admin" element={<Admin />}></Route>
+                <Route path="/events" element={<Events />}></Route>
             </Routes>
         </div>
     );

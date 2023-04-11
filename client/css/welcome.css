@@ -21,18 +21,17 @@
     height: 100vh;
     width: 100%;
 }
-#mute {
+
+.mute img {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
     color: black;
     background-color: red;
     padding: 2px;
     cursor: pointer;
     z-index: 2;
     display: flex;
-}
-#mute img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
