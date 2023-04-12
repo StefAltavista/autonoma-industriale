@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../../database/db");
+const db = require("../../database/mailinglistQueries");
 
-router.post("/api/subscribe", async function (req, res) {
+router.post("/api/subscribe", async (req, res) => {
     console.log(req.body);
     try {
-        const data = await db.subscription(req.body.email);
+        const data = await db.subscribe(req.body.email);
         console.log(data);
         res.json({ success: true });
     } catch (err) {
@@ -14,7 +14,7 @@ router.post("/api/subscribe", async function (req, res) {
     }
 });
 
-router.post("/api/unsubscribe", async function (req, res) {
+router.post("/api/unsubscribe", async (req, res) => {
     try {
         const data = await db.checkUser(req.body.mail);
         console.log(data);
@@ -31,21 +31,21 @@ router.post("/api/unsubscribe", async function (req, res) {
             }
         } else {
             res.json({ success: false });
-            console.log("no check");
+            console.log("user not found");
         }
     } catch (err) {
-        console.log("error checking", err);
+        console.log("DB ERROR", err);
         res.json({ success: false });
     }
 });
 
-router.post("/api/mailinglist", async function (req, res) {
+router.post("/api/mailinglist", async (req, res) => {
     try {
-        const data = await db.getList();
-        console.log(data);
+        const data = await db.mailinglist();
+        console.log(data.rows);
         res.json(data.rows);
     } catch (err) {
-        console.log(err);
+        console.log("DB ERROR", err);
         res.json({ success: false });
     }
 });

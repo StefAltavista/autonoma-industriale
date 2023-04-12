@@ -13,38 +13,4 @@ client.connect((error) => {
     console.log("connected to Database Autonoma at softwarenoise");
 });
 
-const subscription = (email) => {
-    return client.query(
-        `
-    INSERT INTO subscribers 
-    (email) VALUES ($1)`,
-        [email]
-    );
-};
-
-const getList = () => {
-    return client.query(`
-    SELECT * FROM subscribers
-    `);
-};
-
-const checkUser = (email) => {
-    return client.query(
-        `
-    SELECT id, email FROM subscribers
-    WHERE email = $1
-    `,
-        [email]
-    );
-};
-
-const unsubscribe = (email) => {
-    return client.query(
-        `
-    DELETE FROM subscribers
-    WHERE email = $1`,
-        [email]
-    );
-};
-
-module.exports = { subscription, getList, checkUser, unsubscribe };
+module.exports = { client };
