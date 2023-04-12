@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import useValidateAccess from "../hooks/useValidateAccess";
 
 import Header from "./Header";
 import Home from "./Home";
@@ -11,8 +12,11 @@ import Subscribe from "./Subscribe";
 import Unsubscribe from "./Unsubscribe";
 import Admin from "./Admin";
 import Events from "./Events";
+import Mailinglist from "./Mailinglist";
+import NewEvent from "./newEvent";
 
 export default function App() {
+    const [access] = useValidateAccess();
     return (
         <div id="main">
             <Header></Header>
@@ -26,6 +30,17 @@ export default function App() {
                 <Route path="/unsubscribe" element={<Unsubscribe />}></Route>
                 <Route path="/admin" element={<Admin />}></Route>
                 <Route path="/events" element={<Events />}></Route>
+
+                {/* RESERVED ROUTES */}
+                {access && (
+                    <>
+                        <Route
+                            path="/mailinglist"
+                            element={<Mailinglist />}
+                        ></Route>
+                        <Route path="/newevent" element={<NewEvent />}></Route>
+                    </>
+                )}
             </Routes>
         </div>
     );

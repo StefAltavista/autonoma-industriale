@@ -5,22 +5,22 @@ export function useAuthSubmit(path, values) {
     const [error, setError] = useState(false);
     const [isVisib, setIsVisb] = useState(true);
     const [thanks, setThanks] = useState(false);
+    const [token, setToken] = useState();
     const handleClick = () => {
         axios
             .post(path, values)
             .then(({ data }) => {
-                console.log(data);
                 if (!data.success) {
                     setError(true);
                 } else {
                     setIsVisb(false);
                     setThanks(true);
+                    data.token ? setToken(data.token) : null;
                 }
             })
             .catch((err) => {
-                console.log(err);
-                setError(true);
+                setError(err);
             });
     };
-    return [thanks, isVisib, error, handleClick];
+    return [thanks, isVisib, error, handleClick, token];
 }

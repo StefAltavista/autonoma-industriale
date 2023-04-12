@@ -1,20 +1,27 @@
 const express = require("express");
 const router = express.Router();
-let env_vars;
+const auth = require("../utils/jwt");
 
-if (process.env.DATABASE_URL) {
-    env_vars = process.env;
-} else {
-    env_vars = require("../../env_vars.json");
-}
+const env_vars = process.env.DATABASE_URL
+    ? process.env
+    : require("../../env_vars.json");
 
 router.post("/api/authorize", function (req, res) {
     console.log(req.body);
-    if (req.body.password === env_vars.admin) {
-        res.json({ success: true });
+    const password = req.body.password;
+    if (password === env_vars.admin) {
+        const token = auth.createToken(password);
+        req.session.access = token;
+        res.json({ success: true, token });
     } else {
         res.json({ success: false });
     }
+});
+
+router.get("/api/validate", (req, res) => {
+    const response = auth.verification(req.session.access);
+    console.log(...response);
+    return res.json({ ...response });
 });
 
 module.exports = router;
