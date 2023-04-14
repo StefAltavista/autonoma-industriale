@@ -12,7 +12,7 @@ const mailinglistRoute = require("./routes/mailinglistRouter");
 const env_vars = require("../env_vars.json");
 
 const cookieSessionMiddleware = cookieSession({
-    name: "Autohaus-Royal",
+    name: "AI",
     secret: env_vars.cookie_secret,
     maxAge: 1000 * 60 * 60 * 24 * 7,
     sameSite: true,

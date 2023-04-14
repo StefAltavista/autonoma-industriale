@@ -16,7 +16,7 @@ export default function Header() {
                 <Link to="/archive">Archive</Link>
                 <Link to="/about">About</Link>
                 <Link to="/links">Links</Link>
-                <Link to="/admin">Private</Link>
+                <Link to="/admin">Admin</Link>
             </div>
         </div>
     );

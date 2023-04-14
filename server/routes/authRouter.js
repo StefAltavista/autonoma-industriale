@@ -20,7 +20,6 @@ router.post("/api/authorize", function (req, res) {
 
 router.get("/api/validate", (req, res) => {
     const response = auth.verification(req.session.access);
-    console.log(...response);
     return res.json({ ...response });
 });
 
