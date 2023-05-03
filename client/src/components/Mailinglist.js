@@ -15,10 +15,6 @@ export default function Mailinglist() {
         });
     }, []);
 
-    const closeModal = () => {
-        setMailinglist(false);
-    };
-
     return (
         <div id="mailinglist">
             {otherErr && (
@@ -28,9 +24,6 @@ export default function Mailinglist() {
             )}
             {mailinglist && (
                 <div className="resultsContainer">
-                    <p className="closer" onClick={closeModal}>
-                        X
-                    </p>
                     <h3 className="mailingList">Mailing List</h3>
                     <p className="total">[ Total: {mailinglist.length} ]</p>
                     {mailinglist.map((email, idx) => {

@@ -33,7 +33,7 @@ app.use(authRoute);
 app.use(mailinglistRoute);
 
 app.get("*", (req, res) => {
-    res.redirect("/");
+    res.sendFile(path.resolve(__dirname, "../", "dist/", "index.html"));
 });
 
 //server listen

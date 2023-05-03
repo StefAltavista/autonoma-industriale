@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    color: red;
     font-family: "Courier New", Courier, monospace;
     -ms-overflow-style: none; /* hide scrollbar IE and Edge */
     scrollbar-width: none; /* hide scrollbar Firefox */
@@ -29,5 +28,19 @@ body {
 }
 
 a {
+    color: red;
     text-decoration: none;
+}
+
+a :hover {
+    background-color: red;
+    color: black;
+}
+
+#pageBody {
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

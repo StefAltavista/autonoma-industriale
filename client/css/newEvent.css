@@ -1,0 +1,24 @@
+#newEventModal {
+    width: 90%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#newEventForm {
+    display: flex;
+    justify-content: space-around;
+}
+
+#posterPreview {
+    background-color: gray;
+    width: 300px;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+}

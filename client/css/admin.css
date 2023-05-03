@@ -1,0 +1,27 @@
+#admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#adminMenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tools {
+    width: 120px;
+    height: 120px;
+    margin: 50px;
+    background-color: red;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.tools:hover {
+    background-color: black;
+    color: red;
+}
