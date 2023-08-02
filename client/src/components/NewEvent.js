@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../../css/newEvent.css";
-
+import axios from "../utils/axios";
 export default function NewEvent() {
+    const [error, setError] = useState();
     const [eventData, setEventData] = useState({
         evt_name: "",
         start_date: "",
@@ -27,6 +28,19 @@ export default function NewEvent() {
         setEventData({ ...eventData, [e.target.name]: e.target.value });
     };
     const submit = () => {
+        axios
+            .post("/api/newevent", eventData)
+            .then(({ data }) => {
+                if (!data.success) {
+                    setError(true);
+                } else {
+                    location.reload();
+                }
+            })
+            .catch((err) => {
+                setError(err);
+            });
+
         console.log(eventData);
     };
 
@@ -54,8 +68,9 @@ export default function NewEvent() {
                     <div>
                         <p>Public</p>
                         <input
-                            type="ratio"
+                            type="radio"
                             name="published"
+                            value={false}
                             onChange={handleChange}
                         />
                     </div>

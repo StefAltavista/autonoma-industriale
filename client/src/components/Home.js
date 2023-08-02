@@ -1,6 +1,12 @@
 import React from "react";
-import Subscribe from "./Subscribe";
+import "../../css/home.css";
+
+import Events from "./Events";
 
 export default function Home() {
-    return <Subscribe />;
+    return (
+        <div id="home">
+            <Events />
+        </div>
+    );
 }

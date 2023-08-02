@@ -1,0 +1,12 @@
+#event {
+    background-color: darkgray;
+    width: 80vw;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#evt_date {
+    display: flex;
+    justify-content: center;
+}

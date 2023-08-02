@@ -11,12 +11,12 @@ module.exports = {
     plugins: [new HTMLwebpackPlugin({ template: "./client/src/index.html" })],
     devServer: {
         static: path.join(__dirname, "public"),
-        proxy: {
-            "/": {
-                target: "http://localhost:3001",
-            },
-        },
-        port: "3000",
+        // proxy: {
+        //     "/": {
+        //         target: "http://softwarenoise.com/autonomaindustriale",
+        //     },
+        // },
+        port: "8080",
     },
 
     module: {
