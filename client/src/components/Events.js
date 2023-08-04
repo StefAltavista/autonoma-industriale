@@ -15,7 +15,6 @@ export default function Events() {
             if (data.success === false) {
                 setOtherErr(true);
             } else {
-                console.log(data.data);
                 setEventlist(data.data);
             }
         });
@@ -24,10 +23,11 @@ export default function Events() {
     return (
         <div id="events">
             {eventList &&
-                eventList.map((x) => (
+                eventList.map((x, id) => (
                     <img
                         src={x.evt_poster || default_image}
                         onClick={() => setEventView(x)}
+                        key={id}
                     />
                 ))}
             {eventView && (

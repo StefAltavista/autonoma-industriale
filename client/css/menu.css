@@ -9,14 +9,13 @@
 
 #menu a {
     font-size: 20px;
-    /* height: 100%; */
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     transition: 300ms;
 }
 
 #menu a:hover {
     background-color: red;
-    color: black;
+    color: rgb(255, 255, 255);
+    font-size: 21px;
 }

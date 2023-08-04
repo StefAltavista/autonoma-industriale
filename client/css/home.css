@@ -1,6 +1,6 @@
 #home {
     width: 90vw;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,45 +1,59 @@
 import React, { useState } from "react";
 import "../../css/newEvent.css";
 import axios from "../utils/axios";
+
+import readImage from "../utils/readImage";
+import uploadImage from "../utils/uploadImage";
+import NewEventInputs from "./NewEventInputs";
+
 export default function NewEvent() {
     const [error, setError] = useState();
+    const [poster, setPoster] = useState();
+    const [imgFile, setImgFile] = useState();
+
+    // const [poster, setPoster] = useState(
+    //     "images/default_image.png"
+    // );
+
     const [eventData, setEventData] = useState({
-        evt_name: "",
-        start_date: "",
-        start_time: "",
-        end_date: "",
-        end_time: "",
-        evt_location: "",
-        evt_description: "",
-        collaborators: "",
-        published: false,
+        // evt_name: "",
+        // start_date: "",
+        // start_time: "",
+        // end_date: "",
+        // end_time: "",
+        // evt_location: "",
+        // evt_description: "",
+        // evt_poster: "",
+        // collaborators: "",
+        // published: false,
     });
-    const fields = [
-        "evt_name",
-        "start_date",
-        "start_time",
-        "end_date",
-        "end_time",
-        "evt_location",
-        "evt_description",
-        "collaborators",
-    ];
-    const handleChange = (e) => {
+    const handleInput = (e) => {
         setEventData({ ...eventData, [e.target.name]: e.target.value });
     };
-    const submit = () => {
-        axios
-            .post("/api/newevent", eventData)
-            .then(({ data }) => {
-                if (!data.success) {
-                    setError(true);
-                } else {
-                    location.reload();
-                }
-            })
-            .catch((err) => {
-                setError(err);
-            });
+
+    const handleImage = async (img) => {
+        let preview = await readImage(img);
+        setPoster(preview);
+        setImgFile(img);
+    };
+
+    const submit = async () => {
+        const imgUrl = await uploadImage(imgFile);
+        console.log(imgUrl);
+        setEventData({ ...eventData, evt_poster: imgUrl });
+
+        // axios
+        //     .post("/api/newevent", eventData)
+        //     .then(({ data }) => {
+        //         if (!data.success) {
+        //             setError(true);
+        //         } else {
+        //             location.reload();
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         setError(err);
+        //     });
 
         console.log(eventData);
     };
@@ -48,42 +62,13 @@ export default function NewEvent() {
         <div id="newEventModal">
             <h3>{eventData.evt_name || "New Event"}</h3>
             <div id="newEventForm">
-                <div className="inputs">
-                    {fields.map((x, i) => {
-                        let type =
-                            x == "start_time" || x == "end_time"
-                                ? "time"
-                                : "text";
-                        return (
-                            <div className="eventInput" key={i}>
-                                <p>{x}</p>
-                                <input
-                                    type={type}
-                                    name={x}
-                                    onChange={handleChange}
-                                ></input>
-                            </div>
-                        );
-                    })}
-                    <div>
-                        <p>Public</p>
-                        <input
-                            type="radio"
-                            name="published"
-                            value={false}
-                            onChange={handleChange}
-                        />
-                    </div>
-                </div>
+                <NewEventInputs
+                    handleInput={handleInput}
+                    handleImage={handleImage}
+                />
 
-                <div>
-                    <div id="posterPreview">
-                        <input
-                            type="file"
-                            name="evt_poster"
-                            onChange={handleChange}
-                        />
-                    </div>
+                <div id="posterPreview">
+                    <img src={poster} />
                 </div>
             </div>
 

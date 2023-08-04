@@ -5,6 +5,8 @@
     width: 80%;
 }
 #events img {
-    width: 90%;
+    width: 50%;
     padding: 10px;
+    margin-bottom: 50px;
+    cursor: pointer;
 }
